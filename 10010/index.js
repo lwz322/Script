@@ -30,7 +30,7 @@ $ = new API(APIKey, true);
 if ($response) GetCookie();
 
 function GetCookie() {
-  const cookie = $response.headers.get('Set-Cookie') || $response.headers.get('set-cookie');
+  const cookie = $response.headers['Set-Cookie'] || $response.headers['set-cookie'];
   $.log(cookie);
   if (cookie && cookie.indexOf('SSON') > -1) {
     $.write(cookie, 'cookie');
