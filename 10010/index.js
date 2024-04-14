@@ -30,8 +30,8 @@ $ = new API(APIKey, true);
 if ($response) GetCookie();
 
 function GetCookie() {
-  const cookie = $response.headers.get('Set-Cookie');
-  $.log($response.headers);
+  const cookie = $response.headers.get('Set-Cookie') || $response.headers.get('set-cookie');
+  $.log(cookie);
   if (cookie && cookie.indexOf('SSON') > -1) {
     $.write(cookie, 'cookie');
     $.notify('中国电信','cookie 写入成功');
