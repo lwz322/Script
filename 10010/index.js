@@ -27,11 +27,11 @@ https:\/\/m\.client\.10010\.com\/(.*)\/smartwisdomCommon  url script-request-hea
 
 const APIKey = 'YaYa_10000';
 $ = new API(APIKey, true);
-if ($request) GetCookie();
+if ($response) GetCookie();
 
 function GetCookie() {
-  const cookie = $request.headers.Cookie || $request.headers.cookie;
-  $.log($request.headers);
+  const cookie = $response.headers.Cookie || $response.headers.cookie;
+  $.log($response.headers);
   if (cookie && cookie.indexOf('SSON') > -1) {
     $.write(cookie, 'cookie');
     $.notify('中国电信','cookie 写入成功');
