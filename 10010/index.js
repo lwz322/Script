@@ -25,20 +25,19 @@ https:\/\/m\.client\.10010\.com\/(.*)\/smartwisdomCommon  url script-request-hea
 
  */
 
-const APIKey = 'YaYa_10010';
+const APIKey = 'YaYa_10000';
 $ = new API(APIKey, true);
 if ($request) GetCookie();
 
 function GetCookie() {
   const cookie = $request.headers.Cookie || $request.headers.cookie;
   $.log($request.headers);
-  if (cookie && cookie.indexOf('JSESSIONID') > -1) {
+  if (cookie && cookie.indexOf('SSON') > -1) {
     $.write(cookie, 'cookie');
-    $.notify('中国联通','cookie 写入成功');
+    $.notify('中国电信','cookie 写入成功');
   }
   $.done();
 }
-
 
 /* prettier-ignore */
 function ENV(){const isJSBox=typeof require=="function"&&typeof $jsbox!="undefined";return{isQX:typeof $task!=="undefined",isLoon:typeof $loon!=="undefined",isSurge:typeof $httpClient!=="undefined"&&typeof $utils!=="undefined",isBrowser:typeof document!=="undefined",isNode:typeof require=="function"&&!isJSBox,isJSBox,isRequest:typeof $request!=="undefined",isScriptable:typeof importModule!=="undefined",isShadowrocket:"undefined"!==typeof $rocket,isStash:"undefined"!==typeof $environment&&$environment["stash-version"],}}
