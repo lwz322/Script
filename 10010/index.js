@@ -29,13 +29,22 @@ const APIKey = 'YaYa_10000';
 $ = new API(APIKey, true);
 if ($response) GetCookie();
 
+function addDate(date,days){ 
+  var d = new Date(date); 
+  d.setDate(d.getDate()+days); 
+  var m = d.getMonth()+1; 
+  return d.getFullYear() + '-' + m + '-' + d.getDate(); 
+}
+
 function GetCookie() {
   const cookie = $response.headers['Set-Cookie'] || $response.headers['set-cookie'];
-  $.log(cookie);
+  $.log('开始读取cookie');
   if (cookie && cookie.indexOf('SSON') > -1) {
     $.write(cookie, 'cookie');
     $.notify('中国电信','cookie 写入成功');
-    $.notify('vv',cookie);
+    const cookie_expire_day = addDate($script.startTime, 30);
+    $.write(cookie_expire_day, 'expire');
+    $.log(cookie_expire_day);
   }
   $.done();
 }
