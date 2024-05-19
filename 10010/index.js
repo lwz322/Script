@@ -40,7 +40,7 @@ function GetCookie() {
   const cookie = $response.headers['Set-Cookie'] || $response.headers['set-cookie'];
   $.log('开始读取cookie');
   if (cookie && cookie.indexOf('SSON') > -1) {
-    $.write(cookie, 'cookie');
+    $.write(cookie['SSON'], 'cookie');
     $.notify('中国电信','cookie 写入成功');
     const cookie_expire_day = addDate($script.startTime, 30);
     $.write(cookie_expire_day, 'expire');
